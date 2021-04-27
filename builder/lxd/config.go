@@ -27,7 +27,9 @@ type Config struct {
 	// container. This can be a (local or remote) image (name or fingerprint).
 	// E.G. my-base-image, ubuntu-daily:x, 08fababf6f27, ...
 	Image   string `mapstructure:"image" required:"true"`
-	Profile string `mapstructure:"profile"`
+	Profile string `mapstructure:"profile" required:"false"`
+	// Create an virtual machine instead of an cotainer
+	VM bool `mapstructure:"vm" required:"false"`
 	// The number of seconds to sleep between launching
 	// the LXD instance and provisioning it; defaults to 3 seconds.
 	InitSleep string `mapstructure:"init_sleep" required:"false"`

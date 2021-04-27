@@ -25,6 +25,10 @@ func (s *stepLxdLaunch) Run(ctx context.Context, state multistep.StateBag) multi
 		"launch", "--ephemeral=false", profile, image, name,
 	}
 
+	if config.VM {
+		launch_args = append(launch_args, "--vm")
+	}
+
 	for k, v := range config.LaunchConfig {
 		launch_args = append(launch_args, "--config", fmt.Sprintf("%s=%s", k, v))
 	}
